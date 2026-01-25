@@ -5,11 +5,14 @@
 #define G 1000
 
 typedef struct {
-	float x, y, radius, vx, vy, fx, fy, mass;
+	double x, y;
+} Vector2D;
+
+typedef struct {
+	Vector2D position, velocity;
+	float radius, mass;
 } Planet;
 
 Planet planets[MAX_PLANETS];
-
-void resolveForce(Planet p1, Planet p2);
 
 #endif
