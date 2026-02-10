@@ -26,7 +26,7 @@ void resolveForce(Planet *p1, Planet *p2, double dt){
 	Vector2D r = sub(p2->position, p1->position);
 	double distance = magnitude(r);
 	if(distance < 1e-6) return;
-	double force = (G * p1->mass * p2->mass) / (distance * distance + 100);
+	double force = (G * p1->mass * p2->mass) / (distance * distance + 10000);
 	Vector2D direction = {r.x / distance, r.y / distance};
 	Vector2D forceDir = scale(direction, force);
 	Vector2D accelerationP1 = scale(forceDir, 1/p1->mass);

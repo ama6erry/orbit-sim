@@ -1,7 +1,7 @@
 #ifndef PHYS_H
 #define PHYS_H
 
-#define MAX_PLANETS 2
+#define MAX_PLANETS 6
 #define G 100000
 
 typedef struct {

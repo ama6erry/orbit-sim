@@ -5,8 +5,8 @@
 #include <sys/time.h>
 #include <time.h>
 #include <math.h>
-#define SCREEN_WIDTH 900
-#define SCREEN_HEIGHT 600
+#define SCREEN_WIDTH 1920
+#define SCREEN_HEIGHT 1080
 #define FPS 60
 
 
@@ -33,7 +33,7 @@ void generatePlanets(Planet* planetsList, int size){
        randvx = rand() % 40;
        randvy = rand() % 40;
        printf("randvx %d, randvy %d\n", randvx, randvy); 
-       planetsList[i] = (Planet) {(Vector2D){randx, randy}, (Vector2D){randvx, randvy}, 30.0, 30.0}; 
+       planetsList[i] = (Planet) {(Vector2D){randx, randy}, (Vector2D){randvx, randvy}, 30.0, 300.0}; 
     }
 }
 
@@ -46,32 +46,32 @@ void updatePlanets(Planet* planetsList, int size, double dt){
     }
 }
 
-void DrawPlanets(Planet* planetsList, int size){
-    Vector2 pos;
-    double x, y;
-    for(int i = 0; i < size; i++){
-        x = planetsList[i].position.x;
-        y = planetsList[i].position.y;
-        DrawCircle(round(x), YwToYs(round(y)), planetsList[i].radius, RED);
-    }
-}
+//void DrawPlanets(Planet* planetsList, int size){
+//    Vector2 pos;
+//    double x, y;
+//    for(int i = 0; i < size; i++){
+//        x = planetsList[i].position.x;
+//        y = planetsList[i].position.y;
+//        DrawCircle(round(x), YwToYs(round(y)), planetsList[i].radius, RED);
+//    }
+//}
 
 int main(){
     Planet* planets = malloc(MAX_PLANETS * sizeof(Planet));
-    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Orbit sim");
-    SetTargetFPS(FPS);
+    //InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Orbit sim");
+    //SetTargetFPS(FPS);
     generatePlanets(planets, MAX_PLANETS);
     long previousTime = timeInMilliseconds();
-    while(!WindowShouldClose()){
+    while(1){
        long startTime = timeInMilliseconds();
        long dt = startTime - previousTime;
        previousTime = startTime;
        updatePlanets(planets, MAX_PLANETS, (double)dt/1000); 
 
-       BeginDrawing();
-        ClearBackground(WHITE);
-        DrawPlanets(planets, MAX_PLANETS);
-       EndDrawing(); 
+       //BeginDrawing();
+        //ClearBackground(WHITE);
+        //DrawPlanets(planets, MAX_PLANETS);
+       //EndDrawing(); 
     }
 
     printf("Orbit sim inshallah\n");
